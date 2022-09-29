@@ -9,9 +9,10 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import { CreateEvent, ErrorPage, Home } from './pages';
+import { CreateEvent, ErrorPage, EventPage, Home } from './pages';
 
 import '@fontsource/arimo/400.css'
+import '@fontsource/arimo/700.css'
 
 import AppTheme from './theme'
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/create",
     element: <CreateEvent />
+  },
+  {
+    path: "/event",
+    element: <EventPage />
   }
 ]);
 
