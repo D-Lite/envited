@@ -1,17 +1,37 @@
-import { ColorModeScript } from '@chakra-ui/react';
+import { ColorModeScript, ChakraProvider, theme } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+import { ErrorPage, Home } from './pages';
+
+import '@fontsource/arimo/400.css'
+
+import AppTheme from './theme'
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+]);
+
 root.render(
   <StrictMode>
     <ColorModeScript />
-    <App />
+    <ChakraProvider theme={AppTheme}>
+          <RouterProvider router={router} />
+    </ChakraProvider>
   </StrictMode>
 );
 
