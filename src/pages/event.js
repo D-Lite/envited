@@ -15,7 +15,10 @@ import { GoLocation } from 'react-icons/go';
   
   
 
-function Event() {
+function Event(props) {
+    const { eventDetails } = props;
+
+
     return (
         <Stack minH={'100vh'} direction={{ base: 'column-reverse', md: 'row' }} bgGradient='linear(to-l, #FBFAFF, #FBFAFF)'>
             <Flex p={8} flex={1} align={'center'} justify={'center'} textAlign={{base:'start', lg:'start'}}>
@@ -35,11 +38,11 @@ function Event() {
                         bg: 'blue.400',
                         zIndex: -1,
                     }}>
-                    Birthday Bash
+                    {eventDetails?.eventName || 'Military Galore'}
                     </Text>
                 </Heading>
                 <Text fontSize={'24px'} color={'gray.500'} fontWeight={'light'}>
-                    Hosted by <span  fontWeight="black">Elysia</span>
+                    Hosted by <span  fontWeight="black">{eventDetails.hostName || 'Daniel'}</span>
                 </Text>
                 <Stack  align={{base:'center', lg:'flex-start'}}>
                     <Flex>
@@ -56,10 +59,10 @@ function Event() {
                         </Flex>   
                         <Flex ml={'20px'} justify={"center"} align={"start"} flexDir={'column'}>
                         <Text fontSize={'18px'} fontWeight={'black'} color={'#240D57'}>
-                            18 August 6:00PM
+                            {eventDetails.startDaT || '18 August 6:00PM' }
                         </Text>
                         <Text fontSize={'18px'} color={'#4F4F4F'} fontWeight={'light'}>
-                            to 19 August 1:00PM UTC +10
+                        {eventDetails?.endDaT || 'to 19 August 1:00PM UTC +10' }
                         </Text>
                         </Flex> 
                     </Flex> 
@@ -81,7 +84,7 @@ function Event() {
                             Street name
                         </Text>
                         <Text fontSize={'18px'} color={'#4F4F4F'} fontWeight={'light'}>
-                            Suburb, State, Postcode
+                        {eventDetails?.location || 'Suburb, State, Postcode'}
                         </Text>
                         </Flex> 
                     </Flex> 
@@ -96,7 +99,7 @@ function Event() {
                     style={{
                         
                     }}
-                    src={TempIcon}
+                    src={eventDetails?.eventImage.source || TempIcon}
                     />
                 </Box>
             </Flex>

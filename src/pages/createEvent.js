@@ -8,13 +8,16 @@ import {
     Stack,
     useColorModeValue,
     Avatar,
+    Link,
     Center,
   } from '@chakra-ui/react';
 
   import TempIcon from './../assets/temp_icon.png'; 
   import { useFileUpload } from 'use-file-upload'
 import { useState } from 'react';
-  
+import Event from './event';
+
+
   function CreateEvent () { 
     const [file, selectFile] = useFileUpload(TempIcon);
 
@@ -27,10 +30,13 @@ import { useState } from 'react';
         eventImage: selectFile,
     }) 
 
+
+    
     const handleSubmit = (event) => {
     // prevents the submit button from refreshing the page
         event.preventDefault();
         console.log(eventData);
+
         // setContactInfo({ name: "", email: "", phonenumber: "" });
     }
 
@@ -134,7 +140,9 @@ import { useState } from 'react';
                     height={'55px'}
                     onClick={(e) =>handleSubmit(e)}
                     >
+                    <Link to={<Event event={eventData} />} >
                     🎉 Create my event
+                    </Link>
                     </Button> 
             </Stack>
           </Stack>
