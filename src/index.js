@@ -9,7 +9,7 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import { ErrorPage, Home } from './pages';
+import { CreateEvent, ErrorPage, Home } from './pages';
 
 import '@fontsource/arimo/400.css'
 
@@ -24,6 +24,10 @@ const router = createBrowserRouter([
     element: <Home />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/create",
+    element: <CreateEvent />
+  }
 ]);
 
 root.render(
